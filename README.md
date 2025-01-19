@@ -11,7 +11,7 @@
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone <your-github-repo-url>
+   git clone https://github.com/syytruong/laravel-docker-app.git
    cd laravel-docker-app
    ```
 
@@ -23,16 +23,16 @@
 
 3. Start the application
     ```sh
-    ./scripts/start.sh
+    docker compose up -d
     ```
 
 4. Stop the application
     ```sh
-    ./scripts/stop.sh
+    docker compose down
     ```
 ## Usage
-- The application will be available at http://localhost.
-- Use the /api/orders endpoint to submit order payloads.
+- The application will be available at `http://localhost`.
+- Use the `/api/orders` endpoint to submit order payloads.
 
 ## Testing
 ### Using `curl`
@@ -73,25 +73,25 @@ curl -X POST http://localhost/api/orders \
     - Select `raw` and `JSON` format.
     - Past the following JSON:
     ```sh
-    {
-        "first_name": "Alan",
-        "last_name": "Turing",
-        "address": "123 Enigma Ave, Bletchley Park, UK",
-        "basket": [
-            {
-            "name": "Smindle ElePHPant plushie",
-            "type": "unit",
-            "price": 295.45
-            },
-            {
-            "name": "Syntax & Chill",
-            "type": "subscription",
-            "price": 175.00
-            }
-        ]
-     }
-```
-5. Send the request.
+        {
+            "first_name": "Alan",
+            "last_name": "Turing",
+            "address": "123 Enigma Ave, Bletchley Park, UK",
+            "basket": [
+                {
+                "name": "Smindle ElePHPant plushie",
+                "type": "unit",
+                "price": 295.45
+                },
+                {
+                "name": "Syntax & Chill",
+                "type": "subscription",
+                "price": 175.00
+                }
+            ]
+        }
+    ```
+6. Send the request
 
 ### Verify the Response
 
@@ -99,7 +99,7 @@ curl -X POST http://localhost/api/orders \
     - Database: Check your database to ensure the order has been saved correctly.
     - Async Job: Ensure the subscription item is being sent to the third-party endpoint asynchronously.
 
-Example response:
+### Example response:
 ```sh
 {
   "id": 1,
